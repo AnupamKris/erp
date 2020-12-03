@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile Entry</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 0;
+            background: linear-gradient(to bottom right, cyan, purple) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .tit {
+            margin-top: -6px;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .image {
+            position: -webkit-sticky;
+            position: sticky;
+            width: 60px;
+            top: 10%;
+            margin-bottom: -16px;
+            margin-top: 6px;
+        }
+
+        .header {
+            background: #a80000;
+            color: white;
+            padding: 0.1px;
+        }
+
+        .navigation {
+            display: flex;
+            margin-left: 0%;
+            text-align: center;
+        }
+
+        li,
+        a,
+        button {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+        }
+
+        nav {
+            width: 100%;
+            height: 58px;
+            background-color: rgba(0, 0, 0, 0.7);
+            line-height: 20px;
+        }
+
+        .nav__links {
+            list-style: none;
+            margin-top: 17px;
+        }
+
+        .log {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+            border: none;
+            background: blue;
+            border-radius: 50px;
+            padding: 9px 25px;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            float: right;
+            margin-top: -7px;
+            font-weight: bold;
+        }
+
+        .log:hover {
+            background: white;
+            color: #ff009d;
+        }
+
+        button {
+            border: none;
+            background: #1c8adb;
+            border-radius: 50px;
+            padding: 9px 25px;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            float: right;
+            margin-top: -7px;
+        }
+
+        button:hover {
+            background: #ff009d;
+            color: #000;
+        }
+
+        .nav__links li {
+            display: inline-block;
+            padding: 0px 39.7px;
+        }
+
+        .nav__links li a {
+            transition: all 0.3s ease 0s;
+            font-weight: bold;
+        }
+
+        .nav__links li a:hover {
+            color: #ff009d;
+        }
+
+        .btn1 {
+            position: relative;
+            display: inline-block;
+            font-weight: bold;
+            padding: 0.50em 1.9em;
+            text-decoration: none;
+            color: #00BCD4;
+            background: #ECECEC;
+            transition: .4s;
+            border: solid 2px #67c5ff;
+            border-radius: 3px;
+            margin-top: 0%;
+            left: 25%;
+        }
+
+        .btn1:hover {
+            background: #00bcd4;
+            color: white;
+        }
+
+        .btn2 {
+            position: relative;
+            display: inline-block;
+            font-weight: bold;
+            padding: 0.50em 1.4em;
+            text-decoration: none;
+            color: #00BCD4;
+            background: #ECECEC;
+            transition: .4s;
+            border: solid 2px #67c5ff;
+            border-radius: 3px;
+            margin-top: 7%;
+            left: 25%;
+        }
+
+        .btn2:hover {
+            background: #00bcd4;
+            color: white;
+        }
+
+        .btn3 {
+            position: relative;
+            display: inline-block;
+            font-weight: bold;
+            padding: 0.50em 1.9em;
+            text-decoration: none;
+            color: #00BCD4;
+            background: #ECECEC;
+            transition: .4s;
+            border: solid 2px #67c5ff;
+            border-radius: 3px;
+            margin-top: 7%;
+            left: 25%;
+        }
+
+        .btn3:hover {
+            background: #00bcd4;
+            color: white;
+        }
+
+        .btn4 {
+            position: relative;
+            display: inline-block;
+            font-weight: bold;
+            padding: 0.50em 1.4em;
+            text-decoration: none;
+            color: #00BCD4;
+            background: #ECECEC;
+            transition: .4s;
+            border: solid 2px #67c5ff;
+            border-radius: 3px;
+            margin-top: 7%;
+            left: 25%;
+        }
+
+        .btn4:hover {
+            background: #00bcd4;
+            color: white;
+        }
+
+        .login-box {
+            width: 350px;
+            height: 350px;
+            background: rgba(0, 0, 0, 0.5);
+            color: black;
+            top: 55%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            padding: 70px 50px;
+            margin-top: 2%;
+            border: 2.5px solid blue;
+        }
+
+        .wrapper {
+            width: 400px;
+            height: 190px;
+            background: #fff;
+            border-radius: 5px;
+            top: 52%;
+            left: 13%;
+            padding: 20px;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            position: absolute;
+            margin-left: 37%;
+            border: 2.5px solid blue;
+        }
+
+        .wrapper .form .inputfield {
+            margin-top: 5%;
+            margin-right: 5%;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .wrapper .form .inputfield label {
+            width: 200px;
+            color: rebeccapurple;
+            margin-left: 5%;
+            font-size: 14px;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        .wrapper .form .inputfield .input,
+        .wrapper .form .inputfield .textarea {
+            width: 130%;
+            outline: none;
+            border: 2px solid rebeccapurple;
+            font-size: 15px;
+            padding: 8px 10px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .wrapper .form .inputfield:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width:420px) {
+            .wrapper .form .inputfield {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .wrapper .form .inputfield label {
+                margin-bottom: 5px;
+            }
+
+            .wrapper .form .inputfield.terms {
+                flex-direction: row;
+            }
+        }
+
+        .sub {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            margin-top: 35px;
+            display: inline-block;
+            margin-left: 20%;
+        }
+
+        .sub:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+        }
+
+        .can {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .can:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+        }
+
+        .delete {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            margin-top: 30px;
+            display: inline-block;
+            margin-left: 38%;
+        }
+
+        .delete:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+        }
+
+        .edit {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            margin-top: 30px;
+            display: inline-block;
+            margin-left: 38%;
+        }
+
+        .edit:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .wrapper .close {
+            position: absolute;
+            top: 0px;
+            right: 10px;
+            transition: all 200ms;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            color: blue;
+        }
+
+        .wrapper .close:hover {
+            color: #06D85F;
+        }
+
+        .can {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .can:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+        }
+
+        .del {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            margin-top: 30px;
+            display: inline-block;
+            margin-left: 20%;
+        }
+
+        .del:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+        }
+
+        .a {
+            margin-top: 8%;
+        }
+
+        .b {
+            margin-top: 8%;
+        }
+
+        body {
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="header">
+        <h2 class="tit"><img class="image" src="/static/temporary_new_cut_out_tai.png" alt="Avatar"> PRATHYUSHA
+            ENGINEERING COLLEGE</h2>
+    </div>
+    <div class="navigation">
+        <nav>
+            <ul class=" nav__links ">
+                <li><a href="{{ url_for('adminsprofilemain') }} ">Student Profile Entry</a></li>
+                <a class="cta " href="/admin"><button class="log">Home</button></a>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="login-box">
+        <a href="{{ url_for('adminsaddentry') }}" class="btn1">Add Entry</a>
+        <a href="#delete" class="btn2">Delete Entry</a>
+        <a href="#edit" class="btn3">Edit Entry</a>
+        <a href="{{ url_for('adminviewprofile') }}" class="btn4">View Profile</a>
+    </div>
+    <div id="edit" class="overlay">
+        <div class="wrapper">
+            <a class="close" href="#">&times;</a>
+            <div class="form">
+                <b>
+                    <form action="/adminsprofilemain" name='editform' method="POST">
+                        <div class="inputfield">
+                            <label>Student Id</label>
+                            <input name='editstudent' type="text" class="input" placeholder="Student Id"><br>
+                        </div>
+                </b>
+                </form>
+                <a onclick="editform.submit()" class="edit">Edit</a>
+            </div>
+        </div>
+    </div>
+    <div id="delete" class="overlay">
+        <div class="wrapper">
+            <a class="close" href="#">&times;</a>
+            <div class="form">
+                <form name="deleteform" action="/adminsprofilemain" method="POST">
+                    <b>
+                        <div class="inputfield">
+                            <label>Student Id</label>
+                            <input name="deleteuser" type="text" class="input" placeholder="Student Id"><br>
+                        </div>
+                    </b>
+                    <a href="#" onclick="deleteform.submit()" class="del">Delete</a>
+                    <a href="#" class="can">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

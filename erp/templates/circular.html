@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 0;
+            background: linear-gradient(to bottom right, cyan, purple) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .log {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+            border: none;
+            background: blue;
+            border-radius: 50px;
+            padding: 9px 25px;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            float: right;
+            margin-top: -7px;
+            font-weight: bold;
+        }
+
+        .log:hover {
+            background: white;
+            color: #ff009d;
+        }
+
+        .tit {
+            margin-top: -6px;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .image {
+            position: -webkit-sticky;
+            position: sticky;
+            width: 60px;
+            top: 10%;
+            margin-bottom: -16px;
+            margin-top: 6px;
+        }
+
+        .header {
+            background: #a80000;
+            color: white;
+            padding: 0.1px;
+        }
+
+        .navigation {
+            display: flex;
+            margin-left: 0%;
+            text-align: center;
+        }
+
+        li,
+        a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+        }
+
+        nav {
+            width: 100%;
+            height: 58px;
+            background-color: rgba(0, 0, 0, 0.7);
+            line-height: 20px;
+        }
+
+        .nav__links {
+            list-style: none;
+            margin-top: 17px;
+        }
+
+        .nav__links li {
+            display: inline-block;
+            padding: 0px 28px;
+        }
+
+        .nav__links li a {
+            transition: all 0.3s ease 0s;
+            font-weight: bold;
+        }
+
+        .nav__links li a:hover {
+            color: #ff009d;
+        }
+
+        div.slide-up {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        div.slide-up p {
+            /* animation: 15s slide-up; */
+            margin-top: 0%;
+        }
+
+        /* @keyframes slide-up {
+            from {
+                margin-top: -150%;
+                height: 300%;
+            }
+            to {
+                margin-top: 0%;
+                height: 100%;
+            } 
+        }*/
+
+        .login-box {
+            width: 500px;
+            height: 500px;
+            color: black;
+            background-color: white;
+            top: 59%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            border-radius: 5px;
+            padding: 80px;
+            border: 2.5px solid blue;
+        }
+
+        .login-box a {
+            color: blue;
+        }
+
+        .login-box a:hover {
+            color: #ff009d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2 class="tit"><img class="image" src="/static/temporary_new_cut_out_tai.png" alt="Avatar"> PRATHYUSHA
+            ENGINEERING COLLEGE</h2>
+    </div>
+    <div class="navigation">
+        <nav>
+            <ul class=" nav__links ">
+                <li><a href="{{ url_for('circular') }} ">Notifications</a></li>
+                <a href="/main"><button class="log">Home</button></a>
+            </ul>
+        </nav>
+    </div>
+    <div class="login-box">
+        <div class="slide-up">
+            <marquee direction="up" height="380px" scrollamount="2" scrolldelay="70" class="sidelink"
+                onmousedown="this.stop()" onmouseover="this.stop()" onmousemove="this.stop()" onmouseout="this.start()">
+
+                {% for i in data %}
+                {% if 'http' in i[1] %}
+                <a href="{{ i[1] }}">{{ i[0] }}</a><br><br>
+                {% else %}
+                <a href="{{ url_for('send_notif_file', filename=i[1]) }}">{{ i[0] }}</a><br><br> {% endif %}
+                {% endfor %}
+            </marquee>
+        </div>
+    </div>
+</body>
+
+</html>

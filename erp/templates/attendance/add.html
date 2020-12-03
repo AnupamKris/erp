@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Entry</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+    <style>
+        * {
+            scrollbar-width: none;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 0;
+            background: linear-gradient(to bottom right, cyan, purple) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        textarea::-webkit-scrollbar {
+            display: none;
+        }
+
+        .log {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            color: #edf0f1;
+            text-decoration: none;
+            border: none;
+            background: blue;
+            border-radius: 50px;
+            padding: 9px 25px;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            float: right;
+            margin-top: -7px;
+            font-weight: bold;
+        }
+
+        .log:hover {
+            background: white;
+            color: #ff009d;
+        }
+
+        .login-box::-webkit-scrollbar {
+            display: none;
+        }
+
+        textarea::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tit {
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .image {
+            position: -webkit-sticky;
+            position: sticky;
+            width: 60px;
+            top: 8%;
+            margin-top: 4px;
+            margin-bottom: 5px;
+        }
+
+        .header {
+            background: #a80000;
+            color: white;
+        }
+
+        .navigation {
+            display: flex;
+            margin-left: 0%;
+            text-align: center;
+        }
+
+        li,
+        a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        nav {
+            width: 100%;
+            height: 58px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-top: -10px;
+            line-height: 20px;
+        }
+
+        .nav__links {
+            list-style: none;
+            margin-top: 17px;
+        }
+
+        .nav__links li {
+            display: inline-block;
+            padding: 0px 39px;
+        }
+
+        .nav__links li a {
+            transition: all 0.3s ease 0s;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav__links li a:hover {
+            color: #ff009d;
+            text-decoration: none;
+        }
+
+        .box::-webkit-scrollbar {
+            display: none;
+        }
+
+        textarea::-webkit-scrollbar {
+            display: none;
+        }
+
+        .form__input {
+            font: 16px sans;
+            height: 43px;
+            padding: 18px;
+            border: 2px solid rebeccapurple;
+            outline: none;
+            box-sizing: border-box;
+            color: #333;
+            border-radius: 0.2rem;
+            background-color: white;
+        }
+
+        .box {
+            background: #fff;
+            position: absolute;
+            border-radius: 5px;
+            border: 2.5px solid blue;
+            width: 600px;
+            height: 510px;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+        }
+
+        select {
+
+            /* text-align-last: center;*/
+            text-indent: 40%;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            outline: 0;
+            box-shadow: none;
+            border: 0 !important;
+            background: #2c3e50;
+            color: white;
+            background-image: none;
+            flex: 1;
+            cursor: pointer;
+            font-size: 15px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+
+        select::-moz-expand {
+            display: none;
+        }
+
+        .select {
+            flex: 4.5;
+            position: relative;
+            display: flex;
+            height: 43px;
+            line-height: 43px;
+            background: white;
+            overflow: hidden;
+            border-radius: .25em;
+            color: white;
+
+        }
+
+        .select::after {
+            content: '\25BC';
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 1em;
+            background: rebeccapurple;
+            cursor: pointer;
+            pointer-events: none;
+
+        }
+
+        .select:hover::after {
+            color: black;
+        }
+
+        label {
+            color: rebeccapurple;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .inputfield {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .inputfield label {
+            flex: 3;
+            font-size: 18px;
+        }
+
+        .inputfield input {
+            flex: 4;
+        }
+
+        .align {
+            margin-top: 3rem;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .ok {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            display: inline-block;
+            margin-left: 13rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .ok:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+            text-decoration: none;
+        }
+
+        .gen {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            display: inline-block;
+            margin-left: 5rem;
+            font-weight: bold;
+        }
+
+        .gen:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+            text-decoration: none;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .wrapper .close {
+            position: absolute;
+            top: 0px;
+            right: 10px;
+            transition: all 200ms;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            color: blue;
+        }
+
+        .wrapper .close:hover {
+            color: #06D85F;
+        }
+
+        .wrapper {
+            width: 430px;
+            height: 380px;
+            background: #fff;
+            border-radius: 5px;
+            top: 60%;
+            left: 14%;
+            padding: 20px;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            position: absolute;
+            margin-left: 37%;
+            border: 2.5px solid blue;
+        }
+
+        .wrapper .form .inputfield {
+            margin-top: 5%;
+            margin-right: 2%;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            width: 90%;
+            margin-left: 30px;
+        }
+
+        .wrapper .form .inputfield label {
+            width: 200px;
+            color: rebeccapurple;
+            margin-left: -6%;
+            font-size: 14px;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        .wrapper .form .inputfield .input {
+            width: 130%;
+            outline: none;
+            border: 2px solid rebeccapurple;
+            font-size: 15px;
+            padding: 8px 10px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .submit {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            margin-top: 10px;
+            display: inline-block;
+            margin-left: 38%;
+            font-weight: bold;
+        }
+
+        .submit:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <p class="tit"
+            style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 25px;font-weight: bold;"><img
+                class="image" src="/static/temporary_new_cut_out_tai.png"> PRATHYUSHA ENGINEERING COLLEGE</p>
+    </div>
+    <div class="navigation">
+        <nav>
+            <ul class=" nav__links ">
+                <li><a href="{{ url_for('subjectadd') }} ">Add Subject</a></li>
+                <li><a href="#del">Edit Subject</a></li>
+                <a class="cta " href="/admin"><button class="log">Home</button></a>
+            </ul>
+        </nav>
+    </div>
+    <div class="box" style="overflow-y: auto;">
+        <form method="POST" action="/subject/add" name="theform">
+            <div class="align">
+                <div class="form__group">
+                    <div class="inputfield">
+                        <label style=";">Staff Id</label>
+                        <input name="staffid" type="text" class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">Subject Code</label>
+                        <input name="subcode" type="text" class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">Subject Name</label>
+                        <input name="subname" type="text" class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">Batch Year</label>
+                        <input name="year" type="text" class="form__input" />
+                    </div>
+
+                    <div class="inputfield">
+                        <label>Semester</label>
+                        <div class="select">
+                            <select name="sem" id="format">
+                                <option selected disabled>select</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="inputfield">
+                        <label style=";">Department</label>
+                        <div class="select">
+                            <select name="branch" id="format">
+                                <option selected disabled>select</option>
+                                <option value="AI">AI</option>
+                                <option value="CSE">CSE</option>
+                                <option value="IT">IT</option>
+                                <option value="ECE">ECE</option>
+                                <option value="EEE">EEE</option>
+                                <option value="ECE">ECE</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="inputfield">
+                        <label>Section</label>
+                        <div class="select">
+                            <select name="section" id="format">
+                                <option selected disabled>select</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+        <a onclick="theform.submit()" class="ok">Submit</a>
+        <a onclick="theform.reset()" class="gen">Clear</a>
+
+    </div>
+    <div id="del" class="overlay">
+        <div class="wrapper" style=" height: 30%;margin-left: 36%;">
+            <a class="close" href="#">&times;</a>
+            <div class="form" style="margin-top: 10%;">
+                <form method="POST" action="/subject/edit" name="subcodeform">
+                    <b>
+                        <div class="inputfield">
+                            <label>Subject Code</label>
+                            <input type="text" class="input" name="subcode"><br>
+                        </div>
+                    </b>
+                    <a href="#" onclick="subcodeform.submit()" class="submit">Submit</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% if alert %}
+    <script>alert('{{ alert }}')</script>
+    {% endif %}
+</body>
+
+</html>

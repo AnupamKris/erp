@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        tr:hover td,
+        tr:hover a {
+            background: #AFAFAF;
+            color: #121212;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 0;
+            background: linear-gradient(to bottom right, cyan, purple) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .log {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+            border: none;
+            background: blue;
+            border-radius: 50px;
+            padding: 9px 25px;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            float: right;
+            margin-top: -7px;
+            font-weight: bold;
+        }
+
+        .log:hover {
+            background: white;
+            color: #ff009d;
+        }
+
+        .tit {
+            margin-top: -6px;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .image {
+            position: -webkit-sticky;
+            position: sticky;
+            width: 60px;
+            top: 10%;
+            margin-bottom: -16px;
+            margin-top: 6px;
+        }
+
+        .header {
+            background: #a80000;
+            color: white;
+            padding: 0.1px;
+        }
+
+        .navigation {
+            display: flex;
+            margin-left: 0%;
+            text-align: center;
+        }
+
+        li,
+        a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+        }
+
+        nav {
+            width: 100%;
+            height: 58px;
+            background-color: rgba(0, 0, 0, 0.7);
+            line-height: 20px;
+        }
+
+        .nav__links {
+            list-style: none;
+            margin-top: 17px;
+        }
+
+        .nav__links li {
+            display: inline-block;
+            padding: 0px 28px;
+        }
+
+        .nav__links li a {
+            transition: all 0.3s ease 0s;
+            font-weight: bold;
+        }
+
+        .nav__links li a:hover {
+            color: #ff009d;
+        }
+
+        .login-box {
+            width: 550px;
+            height: 540px;
+            background: #fff;
+            top: 59%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            border-radius: 5px;
+            padding: 80px;
+            border: 2.5px solid blue;
+        }
+
+        .login-box .form .inputfield {
+            display: flex;
+            align-items: center;
+        }
+
+        .login-box .form .inputfield label {
+            width: 200px;
+            color: rebeccapurple;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        select {
+            appearance: none;
+            outline: none;
+            box-shadow: none;
+            background: #2c3e50;
+            border: 0 !important;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0 0 0 .5em;
+            color: #fff;
+            font-size: 1em;
+            letter-spacing: .8px;
+            cursor: pointer;
+        }
+
+        .dept {
+            position: relative;
+            display: block;
+            width: 16.2em;
+            height: 2em;
+            background: #2c3e50;
+            overflow: hidden;
+            line-height: 2;
+            border-radius: .25em;
+            margin-left: -50px;
+        }
+
+        .dept::after {
+            content: '\25bc';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0 1em;
+            background: blue;
+            pointer-events: none;
+        }
+
+        .dept:hover::after {
+            color: white;
+        }
+
+        .dept::after {
+            transition: .2s all ease;
+        }
+
+        .proceed {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            margin-top: 145px;
+            display: inline-block;
+            font-weight: bold;
+            margin-left: 150px;
+        }
+
+        .proceed:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2 class="tit"><img class="image" src="/static/temporary_new_cut_out_tai.png" alt="Avatar"> PRATHYUSHA
+            ENGINEERING COLLEGE</h2>
+    </div>
+    <div class="navigation">
+        <nav>
+            <ul class=" nav__links ">
+                <li><a href="{ url_for('subjects') } ">Subjects</a></li>
+                <a href="/main"><button class="log">Home</button></a>
+            </ul>
+        </nav>
+    </div>
+    <div class="login-box">
+        <form action="/subjects">
+
+            <div class="form">
+                <div class="inputfield" style="margin-top: -55px;">
+                    <label style="margin-left: -1%;">Semester</label>
+                    <div class="down">
+                        <div class="dept">
+                            <select name="sem" id="semester">
+                                <option id="sem1" value="1">1</option>
+                                <option id="sem2" value="2">2</option>
+                                <option id="sem3" value="3">3</option>
+                                <option id="sem4" value="4">4</option>
+                                <option id="sem5" value="5">5</option>
+                                <option id="sem6" value="6">6</option>
+                                <option id="sem7" value="7">7</option>
+                                <option id="sem8" value="8">8</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="inputfield" style="margin-top: 100px;">
+                    <label style="margin-left: -1%;">Subjects</label>
+                    <div class="down">
+                        <div class="dept">
+                            <select name="subjects" id="semselect">
+                                <option id="subject1" value="1"></option>
+                                <option id="subject2" value="2"></option>
+                                <option id="subject3" value="3"></option>
+                                <option id="subject4" value="4"></option>
+                                <option id="subject5" value="5"></option>
+                                <option id="subject6" value="6"></option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="inputfield" style="margin-top: 100px;">
+                    <label style="margin-left: -1%;">Material</label>
+                    <div class="down">
+                        <div class="dept">
+                            <select name="material" id="slt-1">
+                                <option id="" value="IAT Question Paper">IAT Question Paper</option>
+                                <option id="" value="University Question Paper">University Question Paper</option>
+                                <option id="" value="Question bank">Question bank</option>
+                                <option id="" value="Assignment Questions">Assignment Questions</option>
+                                <option id="" value="Notes">Notes</option>
+                                <option id="" value="Important Questions For Each Unit">Important Questions
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <input class="proceed" type="submit" value='Proceed'>
+        </form>
+    </div>
+    <script>
+        console.log("clicked!@#@$")
+        $(document).ready(function () {
+            $("#subject1").html("{{ subject[1][1] }}");
+            $("#subject1").val("{{ subject[1][1] }}");
+            $("#subject2").html("{{ subject[1][2] }}");
+            $("#subject2").val("{{ subject[1][2] }}");
+            $("#subject3").html("{{ subject[1][3] }}");
+            $("#subject3").val("{{ subject[1][3] }}");
+            $("#subject4").html("{{ subject[1][4] }}");
+            $("#subject4").val("{{ subject[1][4] }}");
+            $("#subject5").html("{{ subject[1][5] }}");
+            $("#subject5").val("{{ subject[1][5] }}");
+            $("#subject6").html("{{ subject[1][6] }}");
+            $("#subject6").val("{{ subject[1][6] }}");
+            $("#semester").change(function () {
+                console.log("CLICKING");
+                var val = $(this).val();
+                console.log(val);
+                if (val == 1) {
+                    console.log(val)
+                    $("#subject1").html("{{ subject[1][1] }}");
+                    $("#subject1").val("{{ subject[1][1] }}");
+                    $("#subject2").html("{{ subject[1][2] }}");
+                    $("#subject2").val("{{ subject[1][2] }}");
+                    $("#subject3").html("{{ subject[1][3] }}");
+                    $("#subject3").val("{{ subject[1][3] }}");
+                    $("#subject4").html("{{ subject[1][4] }}");
+                    $("#subject4").val("{{ subject[1][4] }}");
+                    $("#subject5").html("{{ subject[1][5] }}");
+                    $("#subject5").val("{{ subject[1][5] }}");
+                    $("#subject6").html("{{ subject[1][6] }}");
+                    $("#subject6").val("{{ subject[1][6] }}");
+                } else if (val == 2) {
+                    $("#subject1").html("{{ subject[2][1] }}");
+                    $("#subject1").val("{{ subject[2][1] }}");
+                    $("#subject2").html("{{ subject[2][2] }}");
+                    $("#subject2").val("{{ subject[2][2] }}");
+                    $("#subject3").html("{{ subject[2][3] }}");
+                    $("#subject3").val("{{ subject[2][3] }}");
+                    $("#subject4").html("{{ subject[2][4] }}");
+                    $("#subject4").val("{{ subject[2][4] }}");
+                    $("#subject5").html("{{ subject[2][5] }}");
+                    $("#subject5").val("{{ subject[2][5] }}");
+                    $("#subject6").html("{{ subject[2][6] }}");
+                    $("#subject6").val("{{ subject[2][6] }}");
+                } else if (val == 3) {
+                    $("#subject1").html("{{ subject[3][1] }}");
+                    $("#subject1").val("{{ subject[3][1] }}");
+                    $("#subject2").html("{{ subject[3][2] }}");
+                    $("#subject2").val("{{ subject[3][2] }}");
+                    $("#subject3").html("{{ subject[3][3] }}");
+                    $("#subject3").val("{{ subject[3][3] }}");
+                    $("#subject4").html("{{ subject[3][4] }}");
+                    $("#subject4").val("{{ subject[3][4] }}");
+                    $("#subject5").html("{{ subject[3][5] }}");
+                    $("#subject5").val("{{ subject[3][5] }}");
+                    $("#subject6").html("{{ subject[3][6] }}");
+                    $("#subject6").val("{{ subject[3][6] }}");
+                } else if (val == 4) {
+                    $("#subject1").html("{{ subject[4][1] }}");
+                    $("#subject1").val("{{ subject[4][1] }}");
+                    $("#subject2").html("{{ subject[4][2] }}");
+                    $("#subject2").val("{{ subject[4][2] }}");
+                    $("#subject3").html("{{ subject[4][3] }}");
+                    $("#subject3").val("{{ subject[4][3] }}");
+                    $("#subject4").html("{{ subject[4][4] }}");
+                    $("#subject4").val("{{ subject[4][4] }}");
+                    $("#subject5").html("{{ subject[4][5] }}");
+                    $("#subject5").val("{{ subject[4][5] }}");
+                    $("#subject6").html("{{ subject[4][6] }}");
+                    $("#subject6").val("{{ subject[4][6] }}");
+                } else if (val == 5) {
+                    $("#subject1").html("{{ subject[5][1] }}");
+                    $("#subject1").val("{{ subject[5][1] }}");
+                    $("#subject2").html("{{ subject[5][2] }}");
+                    $("#subject2").val("{{ subject[5][2] }}");
+                    $("#subject3").html("{{ subject[5][3] }}");
+                    $("#subject3").val("{{ subject[5][3] }}");
+                    $("#subject4").html("{{ subject[5][4] }}");
+                    $("#subject4").val("{{ subject[5][4] }}");
+                    $("#subject5").html("{{ subject[5][5] }}");
+                    $("#subject5").val("{{ subject[5][5] }}");
+                    $("#subject6").html("{{ subject[5][6] }}");
+                    $("#subject6").val("{{ subject[5][6] }}");
+                } else if (val == 6) {
+                    $("#subject1").html("{{ subject[6][1] }}");
+                    $("#subject1").val("{{ subject[6][1] }}");
+                    $("#subject2").html("{{ subject[6][2] }}");
+                    $("#subject2").val("{{ subject[6][2] }}");
+                    $("#subject3").html("{{ subject[6][3] }}");
+                    $("#subject3").val("{{ subject[6][3] }}");
+                    $("#subject4").html("{{ subject[6][4] }}");
+                    $("#subject4").val("{{ subject[6][4] }}");
+                    $("#subject5").html("{{ subject[6][5] }}");
+                    $("#subject5").val("{{ subject[6][5] }}");
+                    $("#subject6").html("{{ subject[6][6] }}");
+                    $("#subject6").val("{{ subject[6][6] }}");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

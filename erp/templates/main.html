@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 0;
+            background: linear-gradient(to bottom right, cyan, purple) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        textarea::-webkit-scrollbar {
+            display: none;
+        }
+
+        .log {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+            border: none;
+            background: blue;
+            border-radius: 50px;
+            padding: 9px 25px;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            float: right;
+            margin-top: -7px;
+            font-weight: bold;
+        }
+
+        .log:hover {
+            background: white;
+            color: #ff009d;
+        }
+
+        .tit {
+            margin-top: -6px;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .image {
+            position: -webkit-sticky;
+            position: sticky;
+            width: 60px;
+            top: 10%;
+            margin-bottom: -16px;
+            margin-top: 6px;
+        }
+
+        .header {
+            background: #a80000;
+            color: white;
+            padding: 0.1px;
+        }
+
+        .navigation {
+            display: flex;
+            margin-left: 0%;
+            text-align: center;
+        }
+
+        li,
+        a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+        }
+
+        nav {
+            width: 100%;
+            height: 58px;
+            background-color: rgba(0, 0, 0, 0.7);
+            line-height: 20px;
+        }
+
+        .nav__links {
+            list-style: none;
+            margin-top: 17px;
+        }
+
+        .nav__links li {
+            display: inline-block;
+            padding: 0px 16px;
+        }
+
+        .nav__links li a {
+            transition: all 0.3s ease 0s;
+            font-weight: bold;
+        }
+
+        .nav__links li a:hover {
+            color: #ff009d;
+        }
+
+        .box::-webkit-scrollbar {
+            display: none;
+        }
+
+        .form__input {
+            font: 16px sans;
+            width: 235px;
+            height: 43px;
+            padding: 18px;
+            border: 2px solid rebeccapurple;
+            outline: none;
+            box-sizing: border-box;
+            color: #333;
+            border-radius: 0.2rem;
+            background-color: white;
+        }
+
+        .form__group {
+            display: flex;
+            flex-direction: column;
+            margin: 0px 50px;
+        }
+
+        .box {
+            background: #fff;
+            position: absolute;
+            border-radius: 5px;
+            border: 2.5px solid blue;
+            width: 580px;
+            height: 580px;
+            top: 470px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+        }
+
+        label {
+            color: rebeccapurple;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .inputfield {
+            display: -webkit-box;
+            /* OLD - iOS 6-, Safari 3.1-6 */
+            display: -moz-box;
+            /* OLD - Firefox 19- (buggy but mostly works) */
+            display: -ms-flexbox;
+            /* TWEENER - IE 10 */
+            display: -webkit-flex;
+            /* NEW - Chrome */
+            display: flex;
+            width: 100%;
+            margin-bottom: 15px;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .inputfield label {
+            flex: 1;
+
+        }
+
+        .inputfield input {
+            flex: 2;
+        }
+
+        .inputfield textarea {
+            flex: 2;
+            height: 100px;
+        }
+
+        .align {
+            margin-top: 1rem;
+        }
+
+        textarea {
+            outline: none;
+            height: 100px;
+            resize: none;
+            width: 20px;
+            border: 2px solid rebeccapurple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2 class="tit"><img class="image" src="/static/temporary_new_cut_out_tai.png" alt="Avatar"> PRATHYUSHA
+            ENGINEERING COLLEGE</h2>
+    </div>
+    <div class="navigation">
+        <nav>
+            <ul class=" nav__links ">
+                <li><a href="{{ url_for('attendance') }}">Attendance</a></li>
+                <li><a href="{{ url_for('marks') }}">Marks</a></li>
+                <li><a href="{{ url_for('subjects') }}">Subjects</a></li>
+                <li><a href="{{ url_for('fees') }}">Fees</a></li>
+                <li><a href="{{ url_for('circular') }}">Circular</a></li>
+                <a class="cta " href="{{ url_for('logout') }}"><button class="log">Logout</button></a>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="box">
+        <h3 style=" text-align: center; color:  rgb(32, 39, 184);"><b>Personal Information</b></h3>
+        <div class="align">
+            <div class="form__group">
+                <div class="inputfield">
+                    <label style="">Full Name</label>
+                    <input disabled value="{{data[1]}}" type="text" class="form__input" />
+                </div>
+                <div class="inputfield">
+                    <label style="">Register Number</label>
+                    <input disabled value="{{data[2]}}" type="text" class="form__input" />
+                </div>
+                <div class="inputfield">
+                    <label style="">Date Of Birth</label>
+                    <input disabled value="{{data[3]}}" type="text" class="form__input" />
+                </div>
+                <div class="inputfield">
+                    <label style="">Contact Number</label>
+                    <input disabled value="{{data[5]}}" type="text" class="form__input" />
+                </div>
+                <div class="inputfield">
+                    <label style="">Blood Group</label>
+                    <input disabled value="{{data[15]}}" type="text" class="form__input" />
+                </div>
+                <div class="inputfield">
+                    <label style="">Email Address</label>
+                    <input disabled value="{{data[6]}}" type="text" class="form__input" />
+                </div>
+                <div class="inputfield">
+                    <label style="">Boarding Point</label>
+                    <input disabled value="{{data[7]}}" type="text" class="form__input" />
+                </div>
+                <div class="inputfield">
+                    <label style="">Address</label>
+                    <textarea disabled class="form__input">{{data[4]}}</textarea>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

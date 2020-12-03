@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mark Attendance</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <style>
+        .tit {
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .image {
+            position: -webkit-sticky;
+            position: sticky;
+            width: 60px;
+            top: 8%;
+            margin-top: 4px;
+            margin-bottom: 5px;
+        }
+
+        .header {
+            background: #a80000;
+            color: white;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(to bottom right, cyan, purple) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        table.table tbody:last-child {
+            border-bottom: 2px solid rebeccapurple;
+        }
+
+        table.table tr th {
+            background-color: blue;
+            color: white;
+        }
+
+        table.table tr th,
+        table.table tr td {
+            border-bottom: 1px solid rebeccapurple;
+            border-top: 0.5px solid rebeccapurple;
+            border-right: 0.5px solid rebeccapurple;
+            border-left: 0.5px solid rebeccapurple;
+        }
+
+        table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        table tbody tr:nth-of-type(odd) {
+            color: blue;
+        }
+
+        .table-responsive::-webkit-scrollbar {
+            display: none;
+        }
+
+        table.table tbody::-webkit-scrollbar {
+            display: none;
+        }
+
+        .navigation {
+            display: flex;
+            text-align: center;
+        }
+
+        li,
+        a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+        }
+
+        .log {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+        }
+
+        nav {
+            width: 100%;
+            height: 58px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-top: -16px;
+            line-height: 20px;
+        }
+
+        .nav__links {
+            list-style: none;
+            margin-top: 17px;
+        }
+
+        .log {
+            border: none;
+            background: blue;
+            border-radius: 50px;
+            padding: 9px 25px;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            float: right;
+            margin-top: -7px;
+            font-weight: bold;
+        }
+
+        .log:hover {
+            background: white;
+            color: #ff009d;
+        }
+
+        .nav__links li {
+            display: inline-block;
+            padding: 0px 39.7px;
+        }
+
+        .nav__links li a {
+            transition: all 0.3s ease 0s;
+            font-weight: bold;
+        }
+
+        .nav__links li a:hover {
+            color: #ff009d;
+            text-decoration: none;
+        }
+
+        .table-wrapper {
+            width: 730px;
+            margin: 6px auto;
+            background: #fff;
+            padding: 10px;
+            border: 2.5px solid blue;
+        }
+
+        table.table tbody {
+            display: block;
+            overflow-y: auto;
+            height: 392px;
+            width: 486%;
+        }
+
+        .ali {
+            margin-left: 16%;
+        }
+
+        table.table {
+            table-layout: fixed;
+        }
+
+        table.table th:first-child {
+            width: 131px;
+        }
+
+        table.table td:first-child {
+            width: 121px;
+        }
+
+        table.table th:nth-child(2) {
+            width: 260px;
+        }
+
+        table.table td:nth-child(2) {
+            width: 265px;
+        }
+
+        table.table th:nth-child(3) {
+            width: 120px;
+        }
+
+        table.table td:nth-child(3) {
+            width: 120px;
+        }
+
+        table.table th:nth-child(4) {
+            width: 120px;
+        }
+
+        table.table td:nth-child(4) {
+            width: 120px;
+        }
+
+        table.table tr {
+            text-align: center;
+        }
+
+        .forms {
+            position: relative;
+            top: 6%;
+            left: 16%;
+            transform: translate(-50%, -50%);
+            transition: all 1s;
+            width: 50px;
+            height: 50px;
+            background: white;
+            box-sizing: border-box;
+            border-radius: 25px;
+            border: 4px solid blue;
+            padding: 5px;
+        }
+
+        input {
+            position: absolute;
+            top: 0;
+            left: 0%;
+            width: 100%;
+            height: 42px;
+            line-height: 30px;
+            outline: 0;
+            border: 0;
+            display: none;
+            font-size: 1em;
+            border-radius: 22px;
+            padding: 0 20px;
+            background: #2A2E37;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .fa {
+            box-sizing: border-box;
+            padding: 10px;
+            width: 42.5px;
+            height: 42.5px;
+            position: absolute;
+            top: -1px;
+            left: 0;
+            border-radius: 50%;
+            color: #07051a;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .forms:hover {
+            width: 240px;
+            border: 4px solid blue;
+        }
+
+        .forms:hover input {
+            display: block;
+        }
+
+        .forms:hover .fa {
+            background: white;
+            color: black;
+        }
+
+        .sub {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            display: inline-block;
+            margin-left: 29%;
+            font-weight: bold;
+        }
+
+        .sub:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+            text-decoration: none;
+        }
+
+        .can {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            display: inline-block;
+            margin-left: 5%;
+            font-weight: bold;
+        }
+
+        .can:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        (function (document) {
+            'use strict';
+
+            var TableFilter = (function (myArray) {
+                var search_input;
+
+                function _onInputSearch(e) {
+                    search_input = e.target;
+                    var tables = document.getElementsByClassName(search_input.getAttribute('data-table'));
+                    myArray.forEach.call(tables, function (table) {
+                        myArray.forEach.call(table.tBodies, function (tbody) {
+                            myArray.forEach.call(tbody.rows, function (row) {
+                                var text_content = row.textContent.toLowerCase();
+                                var search_val = search_input.value.toLowerCase();
+                                row.style.display = text_content.indexOf(search_val) > -1 ? '' : 'none';
+                            });
+                        });
+                    });
+                }
+
+                return {
+                    init: function () {
+                        var inputs = document.getElementsByClassName('search-input');
+                        myArray.forEach.call(inputs, function (input) {
+                            input.oninput = _onInputSearch;
+                        });
+                    }
+                };
+            })(Array.prototype);
+
+            document.addEventListener('readystatechange', function () {
+                if (document.readyState === 'complete') {
+                    TableFilter.init();
+                }
+            });
+
+        })(document);
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <p class="tit"
+            style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 25px;font-weight: bold;"><img
+                class="image"
+                src="C:\Users\Admin\Desktop\Prem\Desktop\project\media_images\temporary_new_cut_out_tai.png"> PRATHYUSHA
+            ENGINEERING COLLEGE</p>
+    </div>
+    <div class="navigation">
+        <nav>
+            <ul class=" nav__links ">
+                <li><a style=" text-decoration: none;" href="{{ url_for('') }} ">Mark Attendance</a></li>
+                <a class="cta " href="/logout"><button class="log">Back</button></a>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container-lg">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <form class="forms" style="margin-top: 20px;">
+                    <input type="search" placeholder="Search..." class="search-input"
+                        data-table="table table-bordered" />
+                    <i class="fa fa-search"></i>
+                </form>
+                <h3 style="margin-top:-60px; text-align: center; color: rebeccapurple;"><b>Mark Attendance</b></h3>
+                <div class="ali">
+                    <table class="table table-bordered" style="margin-left: -15%;">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">Register No</th>
+                                <th style="text-align: center;">Name</th>
+                                <th style="text-align: center;">Absent</th>
+                                <th style="text-align: center;">OD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>111419104081</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                                        <label class="custom-control-label" for="customCheck"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                        <label class="custom-control-label" for="customCheck2"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <label class="custom-control-label" for="customCheck3"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                        <label class="custom-control-label" for="customCheck4"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck5">
+                                        <label class="custom-control-label" for="customCheck5"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck6">
+                                        <label class="custom-control-label" for="customCheck6"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck7">
+                                        <label class="custom-control-label" for="customCheck7"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck8">
+                                        <label class="custom-control-label" for="customCheck8"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck9">
+                                        <label class="custom-control-label" for="customCheck9"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck10">
+                                        <label class="custom-control-label" for="customCheck10"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck11">
+                                        <label class="custom-control-label" for="customCheck11"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck12">
+                                        <label class="custom-control-label" for="customCheck12"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck13">
+                                        <label class="custom-control-label" for="customCheck13"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck14">
+                                        <label class="custom-control-label" for="customCheck14"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck15">
+                                        <label class="custom-control-label" for="customCheck15"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck16">
+                                        <label class="custom-control-label" for="customCheck16"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck17">
+                                        <label class="custom-control-label" for="customCheck17"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck18">
+                                        <label class="custom-control-label" for="customCheck18"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck19">
+                                        <label class="custom-control-label" for="customCheck19"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck20">
+                                        <label class="custom-control-label" for="customCheck20"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck21">
+                                        <label class="custom-control-label" for="customCheck21"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck22">
+                                        <label class="custom-control-label" for="customCheck22"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck23">
+                                        <label class="custom-control-label" for="customCheck23"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck24">
+                                        <label class="custom-control-label" for="customCheck24"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck25">
+                                        <label class="custom-control-label" for="customCheck24"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck26">
+                                        <label class="custom-control-label" for="customCheck26"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck27">
+                                        <label class="custom-control-label" for="customCheck27"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck28">
+                                        <label class="custom-control-label" for="customCheck28"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck29">
+                                        <label class="custom-control-label" for="customCheck29"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td> prem</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck30">
+                                        <label class="custom-control-label" for="customCheck30"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck31">
+                                        <label class="custom-control-label" for="customCheck31"></label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <a href="#" class="sub">Submit</a>
+                <a href="#" class="can">Cancel</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Entry</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+    <style>
+        * {
+            scrollbar-width: none;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 0;
+            background: linear-gradient(to bottom right, cyan, purple) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        textarea::-webkit-scrollbar {
+            display: none;
+        }
+
+        .log {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            color: #edf0f1;
+            text-decoration: none;
+            border: none;
+            background: blue;
+            border-radius: 50px;
+            padding: 9px 25px;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            float: right;
+            margin-top: -7px;
+            font-weight: bold;
+        }
+
+        .log:hover {
+            background: white;
+            color: #ff009d;
+        }
+
+        .login-box::-webkit-scrollbar {
+            display: none;
+        }
+
+        textarea::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tit {
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .image {
+            position: -webkit-sticky;
+            position: sticky;
+            width: 60px;
+            top: 8%;
+            margin-top: 4px;
+            margin-bottom: 5px;
+        }
+
+        .header {
+            background: #a80000;
+            color: white;
+        }
+
+        .navigation {
+            display: flex;
+            margin-left: 0%;
+            text-align: center;
+        }
+
+        li,
+        a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        nav {
+            width: 100%;
+            height: 58px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-top: -10px;
+            line-height: 20px;
+        }
+
+        .nav__links {
+            list-style: none;
+            margin-top: 17px;
+        }
+
+        .nav__links li {
+            display: inline-block;
+            padding: 0px 39px;
+        }
+
+        .nav__links li a {
+            transition: all 0.3s ease 0s;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav__links li a:hover {
+            color: #ff009d;
+            text-decoration: none;
+        }
+
+        .box::-webkit-scrollbar {
+            display: none;
+        }
+
+        textarea::-webkit-scrollbar {
+            display: none;
+        }
+
+        .form__input {
+            font: 16px sans;
+            height: 43px;
+            padding: 18px;
+            border: 2px solid rebeccapurple;
+            outline: none;
+            box-sizing: border-box;
+            color: #333;
+            border-radius: 0.2rem;
+            background-color: white;
+        }
+
+        .box {
+            background: #fff;
+            position: absolute;
+            border-radius: 5px;
+            border: 2.5px solid blue;
+            width: 600px;
+            height: 510px;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+        }
+
+        select {
+
+            /* text-align-last: center;*/
+            text-indent: 40%;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            outline: 0;
+            box-shadow: none;
+            border: 0 !important;
+            background: #2c3e50;
+            color: white;
+            background-image: none;
+            flex: 1;
+            cursor: pointer;
+            font-size: 15px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+
+        select::-moz-expand {
+            display: none;
+        }
+
+        .select {
+            flex: 4.5;
+            position: relative;
+            display: flex;
+            height: 43px;
+            line-height: 43px;
+            background: white;
+            overflow: hidden;
+            border-radius: .25em;
+            color: white;
+
+        }
+
+        .select::after {
+            content: '\25BC';
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 1em;
+            background: rebeccapurple;
+            cursor: pointer;
+            pointer-events: none;
+
+        }
+
+        .select:hover::after {
+            color: black;
+        }
+
+        label {
+            color: rebeccapurple;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .inputfield {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .inputfield label {
+            flex: 3;
+            font-size: 18px;
+        }
+
+        .inputfield input {
+            flex: 4;
+        }
+
+        .input-group date {
+            flex: 4;
+        }
+
+        .inputfield textarea {
+            flex: 4;
+            padding: 18px;
+            font: 16px sans;
+        }
+
+        .align {
+            margin-top: 3rem;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .ok {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            display: inline-block;
+            margin-left: 13rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .ok:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+            text-decoration: none;
+        }
+
+        .gen {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            display: inline-block;
+            margin-left: 5rem;
+            font-weight: bold;
+        }
+
+        .gen:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+            text-decoration: none;
+        }
+
+        .input-group-addon {
+            border: 2px solid rebeccapurple;
+        }
+
+        textarea {
+            outline: none;
+            height: 150px;
+            resize: none;
+            border: 2px solid rebeccapurple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <p class="tit"
+            style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 25px;font-weight: bold;"><img
+                class="image" src="/static/temporary_new_cut_out_tai.png"> PRATHYUSHA
+            ENGINEERING COLLEGE</p>
+    </div>
+    <div class="navigation">
+        <nav>
+            <ul class=" nav__links ">
+                <li><a href="{{ url_for('admin') }} ">Add Entry</a></li>
+                <a class="cta " href="/adminsprofilemain"><button class="log">Back</button></a>
+            </ul>
+        </nav>
+    </div>
+    <div class="box" style="overflow-y: auto;">
+        <form method="POST" action="/admineditprofile" name="theform">
+            <div class="align">
+                <div class="form__group">
+                    <div class="inputfield">
+                        <label style=";">Student Id</label>
+                        <input name="uid" {{ disabled }} value="{{ data['id'] }}" type="text" class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">Register No</label>
+                        <input name="regno" {{ disabled }} value='{{ data["regno"] }}' type="text"
+                            class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">Name</label>
+                        <input name="name" {{ disabled }} value='{{ data["name"] }}' type="text" class="form__input" />
+                    </div>
+                    <div class="form-group">
+                        <div class="inputfield">
+                            <label style="">Date</label>
+                            <div class='input-group date' id='datetimepicker1' style="width: 335px;">
+                                <input name="dob" {{ disabled }}
+                                    value='{{ "-".join(str(data["dob"]).split("-")[::-1]) }}' type='text'
+                                    class="form-control" placeholder="dd-mm-yyyy"
+                                    style="font: 16px sans;padding:20px;border:2px solid rebeccapurple;color: black; box-shadow: none;" />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">Batch</label>
+                        <input name="year" {{ disabled }} value='{{ data["year"] }}' type="text" class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">Branch</label>
+                        <input name="branch" {{ disabled }} value='{{ data["branch"] }}' type="text"
+                            class="form__input" />
+                    </div>
+
+                    <div class="inputfield">
+                        <label style=";">Student Contact No</label>
+                        <input name="contact" {{ disabled }} value="{{ data['contact'] }}" type="text"
+                            class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">Student Email</label>
+                        <input name="email" {{ disabled }} value="{{ data['email'] }}" type="text"
+                            class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style="">Blood Group</label>
+                        <input name="bloodgrp" {{ disabled }} value="{{data['bloodgrp']}}" class="form__input"
+                            type="text" class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style="; " class="address">Address</label>
+                        <textarea name="address" {{ disabled }} class="textarea"
+                            style="overflow-y: auto;">{{ data['address'] }}</textarea>
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">CutOff</label>
+                        <input name="cutoff" {{ disabled }} value="{{ data['cutoff'] }}" type="text"
+                            class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">Boarding Point</label>
+                        <input name="brdpoint" {{ disabled }} value="{{ data['brdpoint'] }}" type="text"
+                            class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">Area</label>
+                        <input name="area" {{ disabled }} value="{{ data['area'] }}" type="text" class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style="">Father Name</label>
+                        <input name="fathername" {{ disabled }} value="{{ data['fathername'] }}" type="text"
+                            class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">Father Occupation</label>
+                        <input name="fatheroccupation" {{ disabled }} value="{{ data['fatheroccupation'] }}" type="text"
+                            class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style=";">Father Contact NO</label>
+                        <input name="fathercontact" {{ disabled }} value="{{ data['fathercontact'] }}" type="text"
+                            class="form__input" />
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+        {% if method=='delete' %}
+        <a href="{{ url_for('deletestudent',studentid=data['id']) }}" class="ok">Delete</a>
+        {% else %}
+        <a onclick="theform.submit()" class="ok">Save</a>
+        <a href="/adminsprofilemain" class="gen">Cancel</a>
+        {% endif %}
+
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js'></script>
+    <script
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js'></script>
+    <script>
+        $(function () {
+            var bindDatePicker = function () {
+                $(".date").datetimepicker({
+                    format: 'DD-MM-YYYY',
+                    icons: {
+                        time: "fa fa-clock-o",
+                        date: "fa fa-calendar",
+                        up: "fa fa-arrow-up",
+                        down: "fa fa-arrow-down"
+                    }
+                })
+            }
+
+            var isValidDate = function (value, format) {
+                format = format || false;
+                // lets parse the date to the best of our knowledge
+                if (format) {
+                    value = parseDate(value);
+                }
+
+                var timestamp = Date.parse(value);
+
+                return isNaN(timestamp) == false;
+            }
+
+            var parseDate = function (value) {
+                var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
+                if (m)
+                    value = ("00" + m[1]).slice(-2) + '-' + ("00" + m[3]).slice(-2) + '-' + m[5];
+
+                return value;
+            }
+
+            bindDatePicker();
+        });
+    </script>
+
+
+</body>
+
+</html>
+<!-- <div class="login-box" style="overflow-y: auto;">
+    <div class="form">
+        <form method="POST" action="/admineditprofile" name="theform">
+            <b>
+                <div class="ali">
+                    <div class="inputfield">
+                        <label style="margin-left: -10%;">Sudent Id</label>
+                        <input name="uid" {{ disabled }} value="{{ data['id'] }}" type="text" class="input"
+                            style="margin-right: -10%;"><br>
+                    </div>
+                    <div class="inputfield">
+                        <label style="margin-left: -10%;">Reg No</label>
+                        <input name="regno" {{ disabled }} value='{{ data["regno"] }}' type="text" class="input "
+                            style="margin-right: -10%;">
+                    </div>
+                    <div class="inputfield">
+                        <label style="margin-left: -10%;">Name</label>
+                        <input name="name" {{ disabled }} value='{{ data["name"] }}' type="text" class="input "
+                            style="margin-right: -10%;">
+
+                    </div>
+                    <div class="form-group">
+                        <div class="inputfield">
+                            <label style="margin-left: -10%;">Date Of Birth</label>
+                            <div class='input-group date' id='datetimepicker1' style="width: 68%; ">
+                                <input name="dob" {{ disabled }}
+                                    value='{{ "-".join(str(data["dob"]).split("-")[::-1]) }}' type='text'
+                                    class="form-control" placeholder="dd-mm-yyyy"
+                                    style="padding: 19px;border:1.5px solid rebeccapurple;color: black; box-shadow: none; font-family: Arial, Helvetica, sans-serif;" />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inputfield" style="margin-top: 9%;">
+                        <label style="margin-left: -10%;">Year</label>
+                        <input name="year" {{ disabled }} value='{{ data["year"] }}' type="text" class="input "
+                            style="margin-right: -10%;">
+                    </div>
+
+                    <div class="inputfield" style="margin-top: 9%;">
+                        <label style="margin-left: -10%;">Branch</label>
+                        <input name="branch" {{ disabled }} value='{{ data["branch"] }}' type="text" class="input "
+                            style="margin-right: -10%;">
+                    </div>
+
+                    <div class="inputfield">
+                        <label style="margin-left: -10%;">Student Contact No</label>
+                        <input name="contact" {{ disabled }} value="{{ data['contact'] }}" type="text" class="input "
+                            style="margin-right: -10%;">
+                    </div>
+                    <div class="inputfield">
+                        <label style="margin-left: -10%;">Student Email</label>
+                        <input name="email" {{ disabled }} value="{{ data['email'] }}" type="email" class="input "
+                            style="margin-right: -10%;">
+                    </div>
+                    <div class="inputfield">
+                        <label style="margin-left: -10%;">Address</label>
+                        <textarea name="address" {{ disabled }} class="textarea"
+                            style="margin-right: -10%;overflow-y: auto;">{{ data['address'] }}</textarea>
+                    </div>
+                    <div class="inputfield">
+                        <label style="margin-left: -10%;">CutOff</label>
+                        <input name="cutoff" {{ disabled }} value="{{ data['cutoff'] }}" type="text" class="input"
+                            style="margin-right: -10%;"><br>
+                    </div>
+                    <div class="inputfield">
+                        <label style="margin-left: -10%;">Boarding Point</label>
+                        <input name="brdpoint" {{ disabled }} value="{{ data['brdpoint'] }}" type="text" class="input "
+                            style="margin-right: -10%;">
+                    </div>
+                    <div class="inputfield">
+                        <label style="margin-left: -10%;">Area</label>
+                        <input name="area" {{ disabled }} value="{{ data['area'] }}" type="text" class="input "
+                            style="margin-right: -10%;">
+                    </div>
+                    <div class="inputfield">
+                        <label style="margin-left: -10%;">Father Name</label>
+                        <input name="fathername" {{ disabled }} value="{{ data['fathername'] }}" type="text"
+                            class="input " style="margin-right: -10%;">
+                    </div>
+                    <div class="inputfield">
+                        <label style="margin-left: -10%;">Father Occupation</label>
+                        <input name="fatheroccupation" {{ disabled }} value="{{ data['fatheroccupation'] }}" type="text"
+                            class="input " style="margin-right: -10%;">
+                    </div>
+                    <div class="inputfield">
+                        <label style="margin-left: -10%;">Father Contact NO</label>
+                        <input name="fathercontact" {{ disabled }} value="{{ data['fathercontact'] }}" type="text"
+                            class="input " style="margin-right: -10%;">
+                    </div>
+                </div>
+            </b>
+
+        </form>
+        <div class="btn">
+            {% if method=='delete' %}
+            <a href="{{ url_for('deletestudent',studentid=data['id']) }}" class="ok">Delete</a>
+            {% else %}
+            <a onclick="theform.submit()" class="ok">Save</a>
+            <a href="/adminsprofilemain" class="gen">Cancel</a>
+            {% endif %}
+        </div>
+    </div>
+</div> -->

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Home Page</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    .box {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .container {
+        position: relative;
+        width: 1100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 50px;
+    }
+    
+    .container .card {
+        position: relative;
+        width: 300px;
+        height: 215px;
+        background: #fff;
+        margin: 30px 10px;
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        transition: 0.3s ease-in-out;
+    }
+    
+   
+    .container .card .imgbox {
+        position: relative;
+        width: 260px;
+        height: 200px;
+        top: -60px;
+        left: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        background: #303030;
+        z-index: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    
+    .container .card .imgbox h1 {
+        max-width: 100%;
+        border-radius: 4px;
+    }
+    
+    .container .card .content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: -140px;
+        padding: 10px 15px;
+        text-align: center;
+        color: #111;
+        transition: 0.3s ease-in-out;
+    }
+    
+
+    
+    body {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin: 0;
+        background: linear-gradient(to bottom right, cyan, purple) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+    .log {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        color: #edf0f1;
+        text-decoration: none;
+        border: none;
+        background: blue;
+        border-radius: 50px;
+        padding: 9px 25px;
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        float: right;
+        margin-top: -7px;
+        font-weight: bold;
+    }
+    
+    .log:hover {
+        background: white;
+        color: #ff009d;
+    }
+    
+    body::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .tit {
+        margin-top: -6px;
+        text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    
+    .image {
+        position: -webkit-sticky;
+        position: sticky;
+        width: 60px;
+        top: 10%;
+        margin-bottom: -16px;
+        margin-top: 6px;
+    }
+    
+    .header {
+        background: #a80000;
+        color: white;
+        padding: 0.1px;
+    }
+    
+    .navigation {
+        display: flex;
+        margin-left: 0%;
+        text-align: center;
+    }
+    
+    li,
+    a {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        color: #edf0f1;
+        text-decoration: none;
+    }
+    
+    nav {
+        width: 100%;
+        height: 58px;
+        background-color: rgba(0, 0, 0, 0.7);
+        line-height: 20px;
+    }
+    
+    .nav__links {
+        list-style: none;
+        margin-top: 17px;
+    }
+    
+    .nav__links li {
+        display: inline-block;
+        padding: 0px 30px;
+    }
+    
+    .nav__links li a {
+        transition: all 0.3s ease 0s;
+        font-weight: bold;
+    }
+    
+    .nav__links li a:hover {
+        color: #ff009d;
+    }
+</style>
+
+<body>
+    <div class="header">
+        <h2 class="tit"><img class="image" src="/static/temporary_new_cut_out_tai.png" alt="Avatar"> PRATHYUSHA ENGINEERING COLLEGE</h2>
+    </div>
+    <div class="navigation">
+        <nav>
+            <ul class=" nav__links ">
+                <li><a href="{{ url_for('main') }} ">Home</a></li>
+                <li><a href="{{ url_for('staff_materials') }} ">Materials</a></li>
+                <li><a href="{{ url_for('staff_attendance') }} ">Attendance</a></li>
+                <li><a href="{{ url_for('staff_marks') }} ">Marks</a></li>
+                <a href="/logout"><button class="log">Logout</button></a>
+            </ul>
+        </nav>
+    </div>
+    <div class="box">
+        <div class="container">
+            {% for data in i %}
+            <div class="card">
+                <div class="imgbox">
+                   <h1 style="color:white">{{ data[1] }}</h1>
+                </div>
+                <div class="content">
+                    <h2 style='color: white; font-family: Consolas;'> ___ </h2>
+                    <p> Subject : {{data[0]}} <br>
+                        Batch Year : {{data[2]}} <br>
+                        Semester : {{data[3]}} <br>
+                        Subject Code : {{ data[4] }}
+
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+           
+        </div>
+    </div>
+
+</body>
+
+</html>

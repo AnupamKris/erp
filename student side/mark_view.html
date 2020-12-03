@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks view</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            background: linear-gradient(to bottom right, cyan, purple) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        
+        .log {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+            border: none;
+            background: blue;
+            border-radius: 50px;
+            padding: 9px 25px;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            float: right;
+            margin-top: -7px;
+            font-weight: bold;
+        }
+        
+        .log:hover {
+            background: white;
+            color: #ff009d;
+        }
+        
+        .tit {
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        
+        .image {
+            position: -webkit-sticky;
+            position: sticky;
+            width: 60px;
+            top: 8%;
+            margin-top: 4px;
+            margin-bottom: 5px;
+        }
+        
+        .header {
+            background: #a80000;
+            color: white;
+        }
+        
+        .navigation {
+            display: flex;
+            text-align: center;
+        }
+        
+        li,
+        a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+        }
+        
+        nav {
+            width: 100%;
+            height: 58px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-top: -16px;
+            line-height: 20px;
+        }
+        
+        .nav__links {
+            list-style: none;
+            margin-top: 17px;
+        }
+        
+        .nav__links li {
+            display: inline-block;
+            padding: 0px 39.7px;
+        }
+        
+        .nav__links li a {
+            transition: all 0.3s ease 0s;
+            font-weight: bold;
+        }
+        
+        .nav__links li a:hover {
+            color: #ff009d;
+            text-decoration: none;
+        }
+        
+        .login-box {
+            width: 730px;
+            height: 425px;
+            background: #fff;
+            top: 60%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            border-radius: 5px;
+            padding: 80px;
+            border: 2.5px solid blue;
+        }
+        
+        .login-box .form .inputfield {
+            display: flex;
+            align-items: center;
+        }
+        
+        .login-box .form .inputfield label {
+            width: 200px;
+            color: rebeccapurple;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        select {
+            appearance: none;
+            outline: none;
+            box-shadow: none;
+            background: #2c3e50;
+            border: 0 !important;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0 0 0 .5em;
+            color: #fff;
+            font-size: 1em;
+            letter-spacing: .8px;
+            cursor: pointer;
+        }
+        
+        .dept {
+            position: relative;
+            display: block;
+            width: 14.7em;
+            height: 2em;
+            background: #2c3e50;
+            overflow: hidden;
+            line-height: 2;
+            border-radius: .25em;
+            margin-left: -9%;
+        }
+        
+        .dept::after {
+            content: '\25bc';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0 1em;
+            background: blue;
+            pointer-events: none;
+        }
+        
+        .dept:hover::after {
+            color: white;
+        }
+        
+        .dept::after {
+            transition: .2s all ease;
+        }
+        
+        table.table {
+            table-layout: fixed;
+        }
+        
+        table.table th:first-child {
+            width: 140px;
+        }
+        
+        table.table td:first-child {
+            width: 140px;
+        }
+        
+        table.table th:nth-child(2) {
+            width: 440px;
+        }
+        
+        table.table td:nth-child(2) {
+            width: 440px;
+            text-align: left;
+        }
+        
+        table.table th:nth-child(3) {
+            width: 120px;
+        }
+        
+        table.table td:nth-child(3) {
+            width: 120px;
+        }
+        
+        table.table tr {
+            text-align: center;
+        }
+        
+        table.table tbody:last-child {
+            border-bottom: 2px solid rebeccapurple;
+        }
+        
+        table.table tr th {
+            background-color: blue;
+            color: white;
+        }
+        
+        table.table tr th,
+        table.table tr td {
+            border-bottom: 1px solid rebeccapurple;
+            border-top: 0.5px solid rebeccapurple;
+            border-right: 0.5px solid rebeccapurple;
+            border-left: 0.5px solid rebeccapurple;
+        }
+        
+        table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+        
+        table tbody tr:nth-of-type(odd) {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <p class="tit" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 25px;font-weight: bold;"><img class="image" src="C:\Users\Admin\Desktop\Prem\Desktop\project\media_images\temporary_new_cut_out_tai.png"> PRATHYUSHA ENGINEERING COLLEGE</p>
+    </div>
+    <div class="navigation">
+        <nav>
+            <ul class=" nav__links ">
+                <li><a href="{% url 'marks' %} ">Marks</a></li>
+                <a href="/main"><button class="log">Back</button></a>
+            </ul>
+        </nav>
+    </div>
+    <div class="login-box">
+        <h3 style="margin-top:-60px; text-align: center; color: rebeccapurple;"><b>/*heading*/</b></h3>
+        <div class="container-lg">
+            <div class="table-responsive" style="overflow-x: visible;margin-left: -83px;margin-top: 10px;">
+                <div class="ali">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Subject Code</th>
+                                <th>Name</th>
+                                <th>Marks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HS8251</td>
+                                <td>Technical English</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>MA8251</td>
+                                <td>Engineering Mathematics-II</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>PH8252</td>
+                                <td>Physics For Information Science</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>BE8255</td>
+                                <td>Basic Electrical,Electronics and Measurement Engineering</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>GE8291</td>
+                                <td>Environmental Science and Engineering</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>CS8251</td>
+                                <td>Programming In C</td>
+                                <td>100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

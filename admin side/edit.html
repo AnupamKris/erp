@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Entry</title>
+
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 0;
+            background: linear-gradient(to bottom right, cyan, purple) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        
+        .log {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+            border: none;
+            background: blue;
+            border-radius: 50px;
+            padding: 9px 25px;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            float: right;
+            margin-top: -7px;
+            font-weight: bold;
+        }
+        
+        .log:hover {
+            background: white;
+            color: #ff009d;
+        }
+        
+        .box::-webkit-scrollbar {
+            display: none;
+        }
+        
+        textarea::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tit {
+            margin-top: -6px;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        
+        .image {
+            position: -webkit-sticky;
+            position: sticky;
+            width: 60px;
+            top: 10%;
+            margin-bottom: -16px;
+            margin-top: 6px;
+        }
+        
+        .header {
+            background: #a80000;
+            color: white;
+            padding: 0.1px;
+        }
+        
+        .navigation {
+            display: flex;
+            margin-left: 0%;
+            text-align: center;
+        }
+        
+        li,
+        a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+        }
+        
+        nav {
+            width: 100%;
+            height: 58px;
+            background-color: rgba(0, 0, 0, 0.7);
+            line-height: 20px;
+        }
+        
+        .nav__links {
+            list-style: none;
+            margin-top: 17px;
+        }
+        
+        .nav__links li {
+            display: inline-block;
+            padding: 0px 39.7px;
+        }
+        
+        .nav__links li a {
+            transition: all 0.3s ease 0s;
+            font-weight: bold;
+        }
+        
+        .nav__links li a:hover {
+            color: #ff009d;
+        }
+        
+        .form__input {
+            font: 20px sans;
+            width: 235px;
+            height: 43px;
+            padding: 18px;
+            border: 2px solid rebeccapurple;
+            outline: none;
+            box-sizing: border-box;
+            color: #333;
+            border-radius: 0.2rem;
+            background-color: white;
+        }
+        
+        .box {
+            background: #fff;
+            position: absolute;
+            border-radius: 5px;
+            border: 2.5px solid blue;
+            width: 550px;
+            height: 510px;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+        }
+        
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            outline: 0;
+            box-shadow: none;
+            border: 0!important;
+            background: #2c3e50;
+            background-image: none;
+            flex: 1;
+            padding: 0 .5em;
+            color: #fff;
+            cursor: pointer;
+            font-size: 15px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        select::-ms-expand {
+            display: none;
+        }
+        
+        select::-moz-expand {
+            display: none;
+        }
+        
+        .select {
+            position: relative;
+            display: flex;
+            width: 14.6em;
+            height: 2.6em;
+            line-height: 2.6;
+            background: #5c6664;
+            overflow: hidden;
+            border-radius: .25em;
+            color: white;
+            left: 3rem;
+        }
+        
+        .select::after {
+            content: '\25BC';
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 1em;
+            background: blue;
+            cursor: pointer;
+            pointer-events: none;
+            transition: .25s all ease;
+        }
+        
+        .select:hover::after {
+            color: black;
+        }
+        
+        label {
+            color: rebeccapurple;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .inputfield {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .align {
+            margin-top: 1rem;
+            margin-left: 5rem;
+        }
+        
+        .ok {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            display: inline-block;
+            margin-left: 4rem;
+            font-weight: bold;
+            margin-top: 0.4rem;
+        }
+        
+        .ok:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+            text-decoration: none;
+        }
+        
+        .gen {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            display: inline-block;
+            margin-left: 2rem;
+            font-weight: bold;
+        }
+        
+        .gen:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+            text-decoration: none;
+        }
+        
+        .can {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            display: inline-block;
+            margin-left: 2rem;
+            font-weight: bold;
+        }
+        
+        .can:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2 class="tit"><img class="image" src="C:\Users\Admin\Desktop\Prem\Desktop\project\media_images\temporary_new_cut_out_tai.png" alt="Avatar"> PRATHYUSHA ENGINEERING COLLEGE</h2>
+    </div>
+    <div class="navigation">
+        <nav>
+            <ul class=" nav__links ">
+                <li><a href="{{ url_for('') }} ">Edit Subject</a></li>
+                <a class="cta " href="/logout"><button class="log">Back</button></a>
+            </ul>
+        </nav>
+    </div>
+    <div class="box">
+        <form method="POST" action="{% url  %}">
+            <div class="align">
+                <div class="form__group">
+                    <div class="inputfield">
+                        <label style="margin-right: 5.8rem;">Staff Id</label>
+                        <input type="text" class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style="margin-right: 3rem;">Subject Code</label>
+                        <input type="text" class="form__input" />
+                    </div>
+                    <div class="inputfield">
+                        <label style="margin-right: 2.6rem;">Subject Name</label>
+                        <input type="text" class="form__input" />
+                    </div>
+                </div>
+
+                <div class="inputfield">
+                    <label style="margin-right: 4.2rem;">Year</label>
+                    <div class="select">
+                        <select name="format" id="format">
+                          <option selected disabled>select</option>
+                          <option value="#">1</option>
+                          <option value="#">2</option>
+                          <option value="#">3</option>
+                          <option value="#">4</option>
+                          <option value="#">5</option>
+                          <option value="#">6</option>
+                          <option value="#">7</option>
+                          <option value="#">8</option>
+                       </select>
+                    </div>
+                </div>
+
+                <div class="inputfield">
+                    <label style="margin-right:0.3rem;">Department</label>
+                    <div class="select">
+                        <select name="format" id="format">
+                          <option selected disabled>select</option>
+                          <option value="#">AI</option>
+                          <option value="#">CSE</option>
+                          <option value="#">IT</option>
+                          <option value="#">ECE</option>
+                          <option value="#">EEE</option>
+                          <option value="#">CE</option>
+                       </select>
+                    </div>
+                </div>
+
+                <div class="inputfield">
+                    <label style="margin-right:0.7rem;">Section</label>
+                    <div class="select" style="left: 5rem;">
+                        <select name="format" id="format">
+                          <option selected disabled>select</option>
+                          <option value="#">A</option>
+                          <option value="#">B</option>
+                       </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <a href="#" class="ok">Submit</a>
+        <a href="#" class="gen">Generate</a>
+        <a href="#" class="can">Cancel</a>
+
+    </div>
+
+
+</body>
+
+</html>

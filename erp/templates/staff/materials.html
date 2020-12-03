@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Materials</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 0;
+            background: linear-gradient(to bottom right, cyan, purple) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        
+        .log {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+            border: none;
+            background: blue;
+            border-radius: 50px;
+            padding: 9px 25px;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            float: right;
+            margin-top: -7px;
+            font-weight: bold;
+        }
+        
+        .log:hover {
+            background: white;
+            color: #ff009d;
+        }
+        
+        .box::-webkit-scrollbar {
+            display: none;
+        }
+        
+        textarea::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tit {
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        
+        .image {
+            position: -webkit-sticky;
+            position: sticky;
+            width: 60px;
+            top: 8%;
+            margin-top: 4px;
+            margin-bottom: 5px;
+        }
+        
+        .header {
+            background: #a80000;
+            color: white;
+        }
+        
+        .navigation {
+            display: flex;
+            text-align: center;
+        }
+        
+        li,
+        a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+        }
+        
+        nav {
+            width: 100%;
+            height: 58px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-top: -16px;
+            line-height: 20px;
+        }
+        
+        .nav__links {
+            list-style: none;
+            margin-top: 17px;
+        }
+        
+        .nav__links li {
+            display: inline-block;
+            padding: 0px 39.7px;
+        }
+        
+        .nav__links li a {
+            transition: all 0.3s ease 0s;
+            font-weight: bold;
+        }
+        
+        .nav__links li a:hover {
+            color: #ff009d;
+            text-decoration: none;
+        }
+        
+        .form__input {
+            font: 16px sans;
+            height: 43px;
+            padding: 18px;
+            border: 2px solid rebeccapurple;
+            outline: none;
+            box-sizing: border-box;
+            color: #333;
+            border-radius: 0.2rem;
+            background-color: white;
+        }
+        
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        
+        label {
+            color: rebeccapurple;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .inputfield {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        
+        .inputfield label {
+            flex: 3;
+            font-size: 18px;
+        }
+        
+        .inputfield input {
+            flex: 4;
+        }
+        
+        .box {
+            background: #fff;
+            position: absolute;
+            border-radius: 5px;
+            border: 2.5px solid blue;
+            width: 500px;
+            height: 550px;
+            top: 58%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+        }
+        
+        .align {
+            margin-top: 2rem;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        
+        .upload {
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            padding: 10px 28px;
+            color: white;
+            display: inline-block;
+            margin-left: 40%;
+            font-weight: bold;
+        }
+        
+        .upload:hover {
+            background-color: white;
+            color: blue;
+            border: 2px solid blue;
+        }
+        
+        .custom-file-label {
+            border: 2px solid rebeccapurple;
+            height: 43px;
+        }
+        
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            outline: 0;
+            box-shadow: none;
+            border: 0!important;
+            background: #2c3e50;
+            background-image: none;
+            flex: 1;
+            padding: 0 .5em;
+            color: #fff;
+            cursor: pointer;
+            font-size: 15px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        select::-ms-expand {
+            display: none;
+        }
+        
+        select::-moz-expand {
+            display: none;
+        }
+        
+        .select {
+            position: relative;
+            display: flex;
+            width: 17.3em;
+            height: 2.6em;
+            line-height: 2.6;
+            background: #5c6664;
+            overflow: hidden;
+            border-radius: .25em;
+            color: white;
+        }
+        
+        .select::after {
+            content: '\25BC';
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 1em;
+            background: blue;
+            cursor: pointer;
+            pointer-events: none;
+            transition: .25s all ease;
+        }
+        
+        .select:hover::after {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    {% if alertmessage %}
+    <script>
+        alert("{{ alertmessage }}")
+    </script>    
+    {% endif %}
+    <div class="header">
+        <p class="tit" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 25px;font-weight: bold;"><img class="image" src="/static/temporary_new_cut_out_tai.png"> PRATHYUSHA ENGINEERING COLLEGE</p>
+    </div>
+    <div class="navigation">
+        <nav>
+            <ul class=" nav__links ">
+                <li><a href="#">Materials</a></li>
+                <a href="/main"><button class="log">Home</button></a>
+            </ul>
+        </nav>
+    </div>
+    <div class="box">
+        <form method="POST" action="" name="theform" enctype="multipart/form-data">
+            <div class="align">
+                <div class="form__group">
+                    <div class="inputfield">
+                        <label>Branch</label>
+                        <div class="select">
+                            <select name="branch" id="format">
+                              <option selected disabled>select</option>
+                              {% for i in secdata %}
+                              <option value="{{ i[0] }}">{{ i[0] }}</option>
+                              {% endfor %}
+                           </select>
+                        </div>
+                    </div>
+                    <div class="inputfield">
+                        <label>Semester</label>
+                        <div class="select">
+                            <select name="sem" id="format">
+                              <option selected disabled>select</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                           </select>
+                        </div>
+                    </div>
+                    <div class="inputfield" style="margin-bottom: 20px;">
+                        <label>Subject</label>
+                        <div class="select">
+                            <select name="subject" id="format">
+                              <option selected disabled>select</option>
+                              {% for i in data %}
+                              <option value="{{ i[2] }}">{{ i[2] }}</option>
+                              {% endfor %}
+                           </select>
+                        </div>
+                    </div>
+                    <div class="inputfield" style="margin-bottom: 20px;">
+                        <label>File</label>
+                        <div class="container mt-3" style="margin-left: 28.1%;">
+                            <div class="custom-file mb-3">
+                                <input type="file" class="custom-file-input" id="customFile" name="filename">
+                                <label class="custom-file-label" for="customFile" style="width: 277px;">Choose file</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="inputfield">
+                        <label>Type</label>
+                        <div class="select">
+                            <select name="mtype" id="format">
+                              <option selected disabled>select</option>
+                              <option value="IAT Question Paper">IAT Question Paper</option>
+                              <option value="University Question Paper">University Question Paper</option>
+                              <option value="Question Bank">Question Bank</option>
+                              <option value="Assignment Questions">Assignment Questions</option>
+                              <option value="Notes">Notes</option>
+                              <option value="Important Questions">Important Questions</option>
+                           </select>
+                        </div>
+                    </div>
+
+                    <div class="inputfield">
+                        <label>Captions</label>
+                        <input name="captions" type="text" class="form__input" />
+                    </div>
+                </div>
+            </div>
+            <a onclick="theform.submit()" class="upload">Upload</a>
+        </form>
+    </div>
+
+    <script>
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+</body>
+
+</html>
